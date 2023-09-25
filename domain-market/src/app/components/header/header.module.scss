@@ -1,0 +1,57 @@
+.Container {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 8;
+  border-bottom: 1px solid #f1f1f5;
+}
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 0px 20px;
+  max-width: 1286px;
+  margin: 0 auto;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+
+.ProfileSec {
+  display: flex;
+  div:not(:last-child) {
+    margin-right: 20px;
+  }
+}
+
+.Box {
+  // padding: 12px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 46px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #f1f1f5;
+  border-radius: 12px;
+  opacity: 1;
+}
+
+.UserName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 160px;
+  height: 46px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #f1f1f5;
+  border-radius: 12px;
+  opacity: 1;
+  span {
+    margin: 0 10px;
+    color: #696974;
+    font-size: 14px;
+    font-family: Regular;
+  }
+}

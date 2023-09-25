@@ -1,0 +1,27 @@
+.NavContainer {
+  margin-top: 96px;
+  box-shadow: 0px 3px 6px #00000005;
+  border-bottom: 1px solid #f1f1f5;
+}
+
+.NavContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 19px 0px 23px;
+  max-width: 1286px;
+  margin: 0 auto;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+
+.NavMenu {
+  display: flex;
+  font-family: Medium;
+  align-items: center;
+  color: #696974;
+  font-size: 14px;
+  div:not(:last-child) {
+    margin-right: 18px;
+  }
+}
