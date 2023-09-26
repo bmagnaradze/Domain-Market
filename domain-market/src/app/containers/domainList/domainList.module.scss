@@ -28,7 +28,7 @@
   margin-right: 20px;
   padding: 35px;
   box-sizing: border-box;
-  background: #ffffff 0% 0% no-repeat padding-box;
+  background: #ffffff;
   border: 1px solid #f1f1f5;
   border-radius: 15px;
 }
@@ -40,6 +40,15 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 30px;
+  button {
+    background: #ffffff;
+    border: 1px solid #e5e5ed;
+    border-radius: 10px;
+    padding: 11px 13px;
+    img {
+      padding-left: 40px;
+    }
+  }
 }
 
 .Quantity {
@@ -86,5 +95,20 @@
     span {
       margin-left: 5px;
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .ListHeader {
+    padding: 0 20px;
+  }
+  .MainContainer {
+    padding: 0;
+  }
+  .ListBox {
+    margin: 0;
+    padding: 0 20px;
+    border-radius: unset;
+    border: unset;
   }
 }

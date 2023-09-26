@@ -7,6 +7,8 @@ import { Domain } from '@/app/core/types/domain.types';
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import NameFilter from '@/app/components/filter/namefilter/nameFilter';
+import useMediaQuery from '@/app/core/hooks/useMediaHook';
+import { breakpointsMax } from '@/app/core/helpers/breakpoints';
 
 export default function DomainList() {
   const [domain, setDomain] = useState<Domain[]>([]);
@@ -14,6 +16,7 @@ export default function DomainList() {
   const [error, setError] = useState<Error | null>(null);
   const [activeSpan, setActiveSpan] = useState(0);
   const [filteredDomain, setFilteredDomain] = useState(domain);
+  const isPad = useMediaQuery(breakpointsMax.medium);
 
   useEffect(() => {
     let isMounted = true;
@@ -64,63 +67,94 @@ export default function DomainList() {
   };
   return (
     <>
-      <div className={styles.ListHeader}>
-        <div className={styles.Quantity}>
-          <span>დომენები მარკეტზე: </span>
-          <b>703</b>
-        </div>
-        <div className={styles.HeaderFilter}>
-          <div>
-            <b>სორტირება:</b>
+      <>
+        {!isPad && (
+          <div className={styles.ListHeader}>
+            <div className={styles.Quantity}>
+              <span>დომენები მარკეტზე: </span>
+              <b>703</b>
+            </div>
+            <div className={styles.HeaderFilter}>
+              <div>
+                <b>სორტირება:</b>
 
-            <span
-              className={`${styles.filterOption} ${
-                activeSpan === 0 ? styles.active : ''
-              }`}
-              onClick={() => handleSpanClick(0)}
-            >
-              დამატების თარიღით
+                <span
+                  className={`${styles.filterOption} ${
+                    activeSpan === 0 ? styles.active : ''
+                  }`}
+                  onClick={() => handleSpanClick(0)}
+                >
+                  დამატების თარიღით
+                  <Image
+                    src='../images/sort-icon.svg'
+                    alt='img'
+                    width={18}
+                    height={9}
+                  />
+                </span>
+                <span
+                  className={`${styles.filterOption} ${
+                    activeSpan === 1 ? styles.active : ''
+                  }`}
+                  onClick={() => handleSpanClick(1)}
+                >
+                  ვადის ამოწურვით
+                </span>
+                <span
+                  className={`${styles.filterOption} ${
+                    activeSpan === 2 ? styles.active : ''
+                  }`}
+                  onClick={() => handleSpanClick(2)}
+                >
+                  ფასით
+                </span>
+                <span
+                  className={`${styles.filterOption} ${
+                    activeSpan === 3 ? styles.active : ''
+                  }`}
+                  onClick={() => handleSpanClick(3)}
+                >
+                  ანბანით
+                </span>
+              </div>
+              <div>
+                <a href='#'>როგორ გავყიდო დომენი?</a>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {isPad && (
+          <div className={styles.ListHeader}>
+            <button>
+              სორტირება{' '}
               <Image
-                src='../images/sort-icon.svg'
-                alt='img'
-                width={18}
-                height={9}
+                src='../images/Dropdown.svg'
+                alt='logo'
+                width={9}
+                height={6}
               />
-            </span>
-            <span
-              className={`${styles.filterOption} ${
-                activeSpan === 1 ? styles.active : ''
-              }`}
-              onClick={() => handleSpanClick(1)}
-            >
-              ვადის ამოწურვით
-            </span>
-            <span
-              className={`${styles.filterOption} ${
-                activeSpan === 2 ? styles.active : ''
-              }`}
-              onClick={() => handleSpanClick(2)}
-            >
-              ფასით
-            </span>
-            <span
-              className={`${styles.filterOption} ${
-                activeSpan === 3 ? styles.active : ''
-              }`}
-              onClick={() => handleSpanClick(3)}
-            >
-              ანბანით
-            </span>
+            </button>
+            <button>
+              სორტირება{' '}
+              <Image
+                src='../images/Dropdown.svg'
+                alt='logo'
+                width={9}
+                height={6}
+              />
+            </button>
           </div>
-          <div>
-            <a href='#'>როგორ გავყიდო დომენი?</a>
-          </div>
-        </div>
-      </div>
+        )}
+      </>
+
       <div className={styles.MainContainer}>
-        <div className={styles.FilterBox}>
-          <NameFilter onSearch={handleSearch} />
-        </div>
+        {!isPad && (
+          <div className={styles.FilterBox}>
+            <NameFilter onSearch={handleSearch} />
+          </div>
+        )}
+
         <div className={styles.ListBox}>
           <section className={styles.Items}>{box}</section>
         </div>

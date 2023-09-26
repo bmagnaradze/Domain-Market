@@ -1,5 +1,5 @@
 .BannerSec {
-  position: relative; /* Required for the pseudo-element */
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,7 +11,6 @@
   width: 100%;
   border-radius: 15px;
 
-  /* Add the background gradient with opacity */
   &::before {
     content: '';
     position: absolute;
@@ -46,5 +45,25 @@
 @media (max-width: 1300px) {
   .BannerBox {
     margin: 30px 30px 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .BannerBox {
+    margin: 0px 0px 20px;
+  }
+  .BannerSec {
+    border-radius: unset;
+    background-image: url('/images/baner-mob.jpg');
+    &::before {
+      background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        transparent url('/images/baner-mob.jpg') center/cover no-repeat;
+      border-radius: unset;
+    }
+  }
+
+  .BannerTxt {
+    font-size: 20px;
+    padding: 30px 100px;
   }
 }

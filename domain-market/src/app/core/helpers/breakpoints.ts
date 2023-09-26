@@ -2,7 +2,7 @@ import { IBreakpoints } from '../types/breakpoints.types';
 
 export const breakpointValues = {
   small: 428,
-  medium: 810,
+  medium: 768,
   large: 1024,
   xlarge: 1350,
   xxlarge: 1920,

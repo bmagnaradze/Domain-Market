@@ -53,6 +53,14 @@
   opacity: 1;
 }
 
+.Logo {
+  display: flex;
+  align-items: center;
+  img:not(:last-child) {
+    margin-right: 14px;
+  }
+}
+
 .Box {
   // padding: 12px 10px;
   display: flex;
@@ -81,5 +89,15 @@
     color: #696974;
     font-size: 14px;
     font-family: Regular;
+  }
+}
+
+@media (max-width: 900px) {
+  .Container {
+    position: unset;
+    padding: 28px 20px;
+  }
+  .Header {
+    padding: 0;
   }
 }

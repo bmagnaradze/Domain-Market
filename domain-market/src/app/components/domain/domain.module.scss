@@ -78,3 +78,19 @@
   font-size: 12px;
   color: #696974;
 }
+
+@media (max-width: 410px) {
+  .domainName {
+    padding-left: 14px;
+  }
+  .priceGel {
+    font-size: 14px;
+  }
+
+  .priceUsd {
+    font-size: 10px;
+  }
+  .priceBox {
+    padding-right: 15px;
+  }
+}
