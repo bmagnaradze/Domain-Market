@@ -1,0 +1,31 @@
+.MainContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: 28px auto 30px;
+  max-width: 1286px;
+}
+
+.ListBox {
+  width: 100%;
+  max-width: 865px;
+  margin-left: 20px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #f1f1f5;
+  border-radius: 15px;
+  padding: 10px 40px;
+
+  .test {
+    section:not(:last-child) {
+      border-bottom: 1px solid #f1f1f5;
+    }
+  }
+}
+
+.FilterBox {
+  width: 100%;
+  max-width: 380px;
+  margin-right: 20px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #f1f1f5;
+  border-radius: 15px;
+}

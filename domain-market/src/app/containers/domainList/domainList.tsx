@@ -2,6 +2,7 @@
 
 import { DomainItem } from '@/app/components/domain/domain';
 import { fetchDomain } from '@/app/core/services/domain.service';
+import styles from './domainList.module.scss';
 import { Domain } from '@/app/core/types/domain.types';
 import React, { useEffect, useState } from 'react';
 
@@ -48,5 +49,12 @@ export default function DomainList() {
     return <DomainItem data={item} key={item.id} />;
   });
 
-  return <>{box}</>;
+  return (
+    <div className={styles.MainContainer}>
+      <div className={styles.FilterBox}>Filter</div>
+      <div className={styles.ListBox}>
+        <section className={styles.test}>{box}</section>
+      </div>
+    </div>
+  );
 }
