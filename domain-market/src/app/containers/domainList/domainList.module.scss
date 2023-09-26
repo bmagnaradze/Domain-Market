@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   margin: 28px auto 30px;
+  padding: 0 30px;
   max-width: 1286px;
 }
 
@@ -14,7 +15,7 @@
   border-radius: 15px;
   padding: 10px 40px;
 
-  .test {
+  .Items {
     section:not(:last-child) {
       border-bottom: 1px solid #f1f1f5;
     }
@@ -25,7 +26,65 @@
   width: 100%;
   max-width: 380px;
   margin-right: 20px;
+  padding: 35px;
+  box-sizing: border-box;
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #f1f1f5;
   border-radius: 15px;
+}
+
+.ListHeader {
+  display: flex;
+  margin: 0 auto;
+  max-width: 1286px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+}
+
+.Quantity {
+  width: 100%;
+  max-width: 380px;
+  margin-right: 20px;
+}
+
+.HeaderFilter {
+  width: 100%;
+  max-width: 865px;
+  margin-left: 20px;
+  display: flex;
+  justify-content: space-between;
+  b {
+    color: #171725;
+  }
+  div {
+    display: flex;
+    align-items: center;
+  }
+  a {
+    color: #171725;
+    font-size: 14px;
+  }
+  span {
+    margin-left: 18px;
+    font-size: 14px;
+    color: #92929d;
+    img {
+      padding-left: 7px;
+    }
+  }
+
+  span:active,
+  span:focus,
+  .active {
+    color: #99cc66;
+  }
+}
+
+@media (max-width: 1200px) {
+  .HeaderFilter {
+    span {
+      margin-left: 5px;
+    }
+  }
 }

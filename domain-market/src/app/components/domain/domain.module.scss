@@ -6,7 +6,7 @@
   transition: all 0.3s ease;
   background: #99cc66;
   border-radius: 10px;
-  padding: 10px 8px;
+  padding: 10px;
 
   .text,
   .textClicked {
@@ -15,6 +15,8 @@
 
   &:hover {
     background-color: #99cc66;
+    width: 110px;
+
     .text {
       display: block;
       font-size: 14px;
@@ -25,6 +27,8 @@
 
   &.clicked {
     background-color: #f5f5f8;
+    width: 110px;
+
     .textClicked {
       display: block;
       font-size: 14px;
@@ -38,6 +42,14 @@
   display: flex;
   justify-content: space-between;
   padding: 20px 0;
+  background-color: #ffffff;
+  &.hoveredBackground {
+    background-color: #f5f5f8;
+    border-radius: 10px;
+    margin-left: -10px;
+    margin-right: -10px;
+    padding: 20px 10px;
+  }
 }
 
 .priceBox {
@@ -59,8 +71,10 @@
 .priceGel {
   font-size: 16px;
   font-weight: bold;
+  color: #171725;
 }
 
 .priceUsd {
   font-size: 12px;
+  color: #696974;
 }

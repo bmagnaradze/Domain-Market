@@ -40,15 +40,33 @@ export const DomainItem: FC<DomainItemProps> = ({ data }) => {
   };
 
   return (
-    <section className={styles.DomainItems}>
+    <section
+      className={`${styles.DomainItems} ${
+        hovered ? styles.hoveredBackground : ''
+      }`}
+    >
       <div className={styles.lefttSec}>
-        <Image src='../images/Btn_send.svg' alt='img' width={36} height={36} />
+        {hovered ? (
+          <Image
+            src='../images/Btn_green.svg'
+            alt='img'
+            width={36}
+            height={36}
+          />
+        ) : (
+          <Image
+            src='../images/Btn_send.svg'
+            alt='img'
+            width={36}
+            height={36}
+          />
+        )}
         <span className={styles.domainName}>{data.domain}</span>
       </div>
       <div className={styles.rightSec}>
         <div className={styles.priceBox}>
-          <div className={styles.priceGel}> {data.priceGel}</div>
-          <div className={styles.priceUsd}> {data.priceUsd}</div>
+          <div className={styles.priceGel}> {data.priceGel} ₾ </div>
+          <div className={styles.priceUsd}> {data.priceUsd} $</div>
         </div>
 
         <div
@@ -68,10 +86,10 @@ export const DomainItem: FC<DomainItemProps> = ({ data }) => {
                     : '../images/cartWhite.svg'
                 }
                 alt='img'
-                width={iconClicked ? 20 : 16}
-                height={iconClicked ? 20 : 16}
+                width={iconClicked ? 20 : 20}
+                height={iconClicked ? 20 : 20}
               />
-              <span className={styles.textClicked}>კალთაშია</span>
+              <span className={styles.textClicked}>კალათაშია</span>
             </>
           ) : (
             <>
@@ -83,8 +101,8 @@ export const DomainItem: FC<DomainItemProps> = ({ data }) => {
                     : '../images/cartWhite.svg'
                 }
                 alt='img'
-                width={iconClicked ? 20 : 16}
-                height={iconClicked ? 20 : 16}
+                width={iconClicked ? 20 : 20}
+                height={iconClicked ? 20 : 20}
               />
             </>
           )}
