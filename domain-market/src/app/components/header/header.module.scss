@@ -5,6 +5,8 @@
   left: 0;
   z-index: 8;
   border-bottom: 1px solid #f1f1f5;
+  padding: 0 30px;
+  box-sizing: border-box;
 }
 
 .Header {
@@ -23,6 +25,31 @@
   div:not(:last-child) {
     margin-right: 20px;
   }
+}
+
+.Count {
+  position: absolute;
+  font-size: 11px;
+  top: -8px;
+  right: -8px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+.Cart {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 46px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #f1f1f5;
+  border-radius: 12px;
+  opacity: 1;
 }
 
 .Box {

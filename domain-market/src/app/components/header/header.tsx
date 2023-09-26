@@ -16,13 +16,14 @@ export default function Header() {
               height={20}
             />
           </div>
-          <div className={styles.Box}>
+          <div className={styles.Cart}>
             <Image
               src='../images/cart-icon.svg'
               alt='img'
               width={21}
               height={19}
             />
+            <div className={styles.Count}>3</div>
           </div>
           <div className={styles.UserName}>
             <Image

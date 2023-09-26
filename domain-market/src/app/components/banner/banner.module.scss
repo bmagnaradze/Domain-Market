@@ -1,0 +1,36 @@
+.BannerSec {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 186px;
+  background-image: url('/images/baner.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  border-radius: 15px;
+  background-color: #0000004d;
+}
+
+.BannerBox {
+  margin: 30px auto 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1286px;
+  //   padding: 0 30px;
+  box-sizing: border-box;
+}
+
+.BannerTxt {
+  color: #ffffff;
+  padding: 65px 0;
+  font-size: 36px;
+  font-family: Medum;
+}
+
+@media (max-width: 1200px) {
+  .BannerBox {
+    margin: 30px 30px 40px;
+  }
+}

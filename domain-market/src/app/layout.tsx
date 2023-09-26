@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import styles from '../app/globals.module.scss';
 
 export const metadata: Metadata = {
   title: 'Domain-market',
@@ -12,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body>{children}</body>
+      <body className={styles.Main}>{children}</body>
     </html>
   );
 }
