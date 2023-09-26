@@ -1,6 +1,11 @@
+'use client';
+
 import styles from '../header/header.module.scss';
 import Image from 'next/image';
+import { useCart } from '../cart/cart';
+
 export default function Header() {
+  const { cartItemCount } = useCart();
   return (
     <div className={styles.Container}>
       <div className={styles.Header}>
@@ -23,7 +28,7 @@ export default function Header() {
               width={21}
               height={19}
             />
-            <div className={styles.Count}>3</div>
+            <div className={styles.Count}>{cartItemCount}</div>
           </div>
           <div className={styles.UserName}>
             <Image
