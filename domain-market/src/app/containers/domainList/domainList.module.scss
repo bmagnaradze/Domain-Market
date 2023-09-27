@@ -55,6 +55,11 @@
   width: 100%;
   max-width: 380px;
   margin-right: 20px;
+  color: #696974;
+  font-weight: 500;
+  b {
+    color: #171d25;
+  }
 }
 
 .HeaderFilter {
@@ -65,6 +70,7 @@
   justify-content: space-between;
   b {
     color: #171725;
+    font-size: 14px;
   }
   div {
     display: flex;
@@ -89,7 +95,23 @@
     color: #99cc66;
   }
 }
-
+.NoResults {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 500px;
+  margin: 0 auto;
+  p {
+    color: #696974;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  span {
+    color: #92929d;
+    font-size: 14px;
+  }
+}
 @media (max-width: 1200px) {
   .HeaderFilter {
     span {

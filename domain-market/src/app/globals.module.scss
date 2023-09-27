@@ -1,17 +1,32 @@
+@font-face {
+  font-family: 'TKT-Medium';
+  src: url('../../public/fonts/TKT-Regular.eot');
+  src: url('../../public/fonts/TKT-Regular.eot?#iefix')
+      format('embedded-opentype'),
+    url('../../public/fonts/TKT-Regular.woff2') format('woff2'),
+    url('../../public/fonts/TKT-Regular.woff') format('woff'),
+    url('../../public/fonts/TKT-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TKT-Regular';
+  src: url('../../public/fonts/TKT-Medium.eot');
+  src: url('../../public/fonts/TKT-Medium.eot?#iefix')
+      format('embedded-opentype'),
+    url('../../public/fonts/TKT-Medium.woff2') format('woff2'),
+    url('../../public/fonts/TKT-Medium.woff') format('woff'),
+    url('../../public/fonts/TKT-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
 body.Main {
   // width: 100%;
   background: #fafafb;
   margin: 0;
   box-sizing: border-box;
-  font-family: Regular;
-}
-
-@font-face {
-  font-family: 'Medium';
-  src: url('./core/fonts/TKT-Medium.ttf') format('TTF');
-}
-
-@font-face {
-  font-family: 'Regular';
-  src: url('./core/fonts/TKT-Regular.ttf') format('TTF');
+  font-family: 'TKT-Regular';
 }

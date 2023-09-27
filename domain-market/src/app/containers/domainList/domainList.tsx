@@ -16,6 +16,9 @@ export default function DomainList() {
   const [error, setError] = useState<Error | null>(null);
   const [activeSpan, setActiveSpan] = useState(0);
   const [filteredDomain, setFilteredDomain] = useState(domain);
+  const [search, setSearch] = useState('');
+  const [hasMatchingDomains, setHasMatchingDomains] = useState<boolean>(true);
+
   const isPad = useMediaQuery(breakpointsMax.medium);
 
   useEffect(() => {
@@ -44,6 +47,14 @@ export default function DomainList() {
     };
   }, []);
 
+  useEffect(() => {
+    const filteredList = domain.filter((item) =>
+      item.domain.toLowerCase().includes(search.toLowerCase())
+    );
+    setFilteredDomain(filteredList);
+    setHasMatchingDomains(filteredList.length > 0);
+  }, [search, domain]);
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -52,18 +63,15 @@ export default function DomainList() {
     return <div>Error: {error.message}</div>;
   }
 
-  const box = domain.map((item) => {
-    return <DomainItem data={item} key={item.id} />;
-  });
+  const box = (hasMatchingDomains ? filteredDomain : domain).map((item) => (
+    <DomainItem data={item} key={item.id} />
+  ));
   const handleSpanClick = (index: any) => {
     setActiveSpan(index);
   };
 
   const handleSearch = (query: string) => {
-    const filteredList = domain.filter((item) =>
-      item.domain.toLowerCase().includes(query.toLowerCase())
-    );
-    setFilteredDomain(filteredList);
+    setSearch(query);
   };
   return (
     <>
@@ -156,7 +164,23 @@ export default function DomainList() {
         )}
 
         <div className={styles.ListBox}>
-          <section className={styles.Items}>{box}</section>
+          {hasMatchingDomains ? (
+            <section className={styles.Items}>{box}</section>
+          ) : (
+            <div className={styles.NoResults}>
+              <Image
+                src='../images/err-img.svg'
+                alt='No Results'
+                width={200}
+                height={200}
+              />
+              <p>დომენი ვერ მოიძებნა</p>
+              <span>
+                მითითებული პარამეტრებით დომენების მარკეტში შედეგები ვერ
+                მოიძებნა, შეცვალეთ ძიების პარამეტრები და ცადეთ თავიდან
+              </span>
+            </div>
+          )}
         </div>
       </div>
     </>

@@ -1,81 +1,94 @@
 [
   {
     "id": 1,
-    "domain": "gijashvili.org.ge",
+    "domain": "some.org.ge",
     "priceGel": "40 000",
-    "priceUsd": "14 285.7 "
+    "priceUsd": "14 285.7 ",
+    "category": "ბიზნესი "
   },
   {
     "id": 2,
-    "domain": "gijashvili.org.ge",
-    "priceGel": "40 000",
-    "priceUsd": "14 285.7 "
+    "domain": "somesome.org.ge",
+    "priceGel": "20 000",
+    "priceUsd": "9 285.7 ",
+    "category": "თამაში "
   },
   {
     "id": 3,
     "domain": "gijashvili.org.ge",
     "priceGel": "40 000",
-    "priceUsd": "14 285.7 "
+    "priceUsd": "14 285.7 ",
+    "category": "მედია "
   },
   {
     "id": 4,
-    "domain": "gijashvili.org.ge",
-    "priceGel": "40 000",
-    "priceUsd": "14 285.7 "
+    "domain": "lemondo.org.ge",
+    "priceGel": "17 000",
+    "priceUsd": "4 285.7 ",
+    "category": "განათლება "
   },
   {
     "id": 5,
     "domain": "gijashvili.org.ge",
     "priceGel": "40 000",
-    "priceUsd": "14 285.7 "
+    "priceUsd": "14 285.7 ",
+    "category": "კომერცია "
   },
   {
     "id": 6,
     "domain": "gijashvili.org.ge",
     "priceGel": "40 000",
-    "priceUsd": "14 285.7 "
+    "priceUsd": "14 285.7 ",
+    "category": "ფინანსები "
   },
   {
     "id": 7,
     "domain": "gijashvili.school.ge",
     "priceGel": "40 000",
-    "priceUsd": "14 285.7 "
+    "priceUsd": "14 285.7 ",
+    "category": "ავტო "
   },
 
   {
     "id": 8,
     "domain": "gijashvili.net.ge",
-    "priceGel": "40 000",
-    "priceUsd": "14 285.7 "
+    "priceGel": "50 000",
+    "priceUsd": "21 285.7 ",
+    "category": "მედიცინა "
   },
   {
     "id": 9,
     "domain": "gijashvili.com.ge",
     "priceGel": "40 000",
-    "priceUsd": "14 285.7 "
+    "priceUsd": "14 285.7 ",
+    "category": "ტექნოლოგიები "
   },
   {
     "id": 10,
     "domain": "ilia.ge",
     "priceGel": "40 000",
-    "priceUsd": "14 285.7 "
+    "priceUsd": "14 285.7 ",
+    "category": "უძრავი ქონება "
   },
   {
     "id": 11,
     "domain": "gijashvili.com.ge",
     "priceGel": "40 000",
-    "priceUsd": "14 285.7 "
+    "priceUsd": "14 285.7 ",
+    "category": "ბიზნესი "
   },
   {
     "id": 12,
     "domain": "gijashvili.org.ge",
     "priceGel": "40 000",
-    "priceUsd": "14 285.7 "
+    "priceUsd": "14 285.7 ",
+    "category": "მედიცინა "
   },
   {
     "id": 13,
     "domain": "gijashvili.net.ge",
     "priceGel": "40 000",
-    "priceUsd": "14 285.7 "
+    "priceUsd": "14 285.7 ",
+    "category": "ავტო "
   }
 ]

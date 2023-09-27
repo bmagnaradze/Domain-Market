@@ -9,7 +9,6 @@ import { breakpointsMax } from '@/app/core/helpers/breakpoints';
 export default function Header() {
   const { cartItemCount } = useCart();
   const isPad = useMediaQuery(breakpointsMax.medium);
-
   return (
     <div className={styles.Container}>
       <div className={styles.Header}>

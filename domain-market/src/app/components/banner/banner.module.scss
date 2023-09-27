@@ -38,7 +38,7 @@
   color: #ffffff;
   padding: 65px 0;
   font-size: 36px;
-  font-family: Medum;
+  font-weight: 500;
   z-index: 11;
 }
 
@@ -50,7 +50,7 @@
 
 @media (max-width: 768px) {
   .BannerBox {
-    margin: 0px 0px 20px;
+    margin: 81px 0px 20px;
   }
   .BannerSec {
     border-radius: unset;
@@ -65,5 +65,6 @@
   .BannerTxt {
     font-size: 20px;
     padding: 30px 100px;
+    text-align: center;
   }
 }

@@ -88,13 +88,11 @@
     margin: 0 10px;
     color: #696974;
     font-size: 14px;
-    font-family: Regular;
   }
 }
 
 @media (max-width: 900px) {
   .Container {
-    position: unset;
     padding: 28px 20px;
   }
   .Header {
