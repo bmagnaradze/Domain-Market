@@ -61,7 +61,7 @@ export const DomainItem: FC<DomainItemProps> = ({ data }) => {
             height={36}
           />
         )}
-        <span className={styles.domainName}>{data.domain}</span>
+        <span className={styles.domainName}>{data.domainName}</span>
       </div>
       <div className={styles.rightSec}>
         <div className={styles.priceBox}>

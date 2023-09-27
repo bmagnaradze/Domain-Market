@@ -1,6 +1,8 @@
 export interface Domain {
   id: number;
-  domain: string;
+  domainName: string;
   priceGel: number;
   priceUsd: number;
+  category: string;
+  domain: string;
 }

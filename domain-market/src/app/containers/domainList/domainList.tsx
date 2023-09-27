@@ -9,6 +9,8 @@ import Image from 'next/image';
 import NameFilter from '@/app/components/filter/namefilter/nameFilter';
 import useMediaQuery from '@/app/core/hooks/useMediaHook';
 import { breakpointsMax } from '@/app/core/helpers/breakpoints';
+import CategoryFilter from '@/app/components/filter/categoryfilter/categoryflter';
+import DomainFilter from '@/app/components/filter/domainfilter/domainfilter';
 
 export default function DomainList() {
   const [domain, setDomain] = useState<Domain[]>([]);
@@ -18,6 +20,10 @@ export default function DomainList() {
   const [filteredDomain, setFilteredDomain] = useState(domain);
   const [search, setSearch] = useState('');
   const [hasMatchingDomains, setHasMatchingDomains] = useState<boolean>(true);
+  const [categories, setCategories] = useState<string[]>([]);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [domains, setDomains] = useState<string[]>([]);
+  const [selectedDomains, setSelectedDomains] = useState<string[]>([]);
 
   const isPad = useMediaQuery(breakpointsMax.medium);
 
@@ -49,11 +55,36 @@ export default function DomainList() {
 
   useEffect(() => {
     const filteredList = domain.filter((item) =>
-      item.domain.toLowerCase().includes(search.toLowerCase())
+      item.domainName.toLowerCase().includes(search.toLowerCase())
     );
     setFilteredDomain(filteredList);
     setHasMatchingDomains(filteredList.length > 0);
   }, [search, domain]);
+
+  useEffect(() => {
+    const uniqueCategories = [...new Set(domain.map((item) => item.category))];
+    setCategories(uniqueCategories);
+  }, [domain]);
+  useEffect(() => {
+    const uniqueDomains = [...new Set(domain.map((item) => item.domain))];
+    setDomains(uniqueDomains);
+  }, [domain]);
+
+  const handleCategoryChange = (category: string) => {
+    if (selectedCategories.includes(category)) {
+      setSelectedCategories(selectedCategories.filter((c) => c !== category));
+    } else {
+      setSelectedCategories([...selectedCategories, category]);
+    }
+  };
+
+  const handleDomainChange = (domain: string) => {
+    if (selectedDomains.includes(domain)) {
+      setSelectedDomains(selectedDomains.filter((d) => d !== domain));
+    } else {
+      setSelectedDomains([...selectedDomains, domain]);
+    }
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -73,6 +104,21 @@ export default function DomainList() {
   const handleSearch = (query: string) => {
     setSearch(query);
   };
+  const filteredList = domain.filter((item) => {
+    const categoryMatch =
+      selectedCategories.length === 0 ||
+      selectedCategories.includes(item.category);
+
+    const domainMatch =
+      selectedDomains.length === 0 || selectedDomains.includes(item.domain);
+
+    const searchMatch = item.domainName
+      .toLowerCase()
+      .includes(search.toLowerCase());
+
+    return categoryMatch && domainMatch && searchMatch;
+  });
+
   return (
     <>
       <>
@@ -135,7 +181,7 @@ export default function DomainList() {
         {isPad && (
           <div className={styles.ListHeader}>
             <button>
-              სორტირება{' '}
+              სორტირება
               <Image
                 src='../images/Dropdown.svg'
                 alt='logo'
@@ -144,7 +190,7 @@ export default function DomainList() {
               />
             </button>
             <button>
-              სორტირება{' '}
+              სორტირება
               <Image
                 src='../images/Dropdown.svg'
                 alt='logo'
@@ -160,19 +206,33 @@ export default function DomainList() {
         {!isPad && (
           <div className={styles.FilterBox}>
             <NameFilter onSearch={handleSearch} />
+            <CategoryFilter
+              categories={categories}
+              selectedCategories={selectedCategories}
+              onCategoryChange={handleCategoryChange}
+            />
+            <DomainFilter
+              domains={domains}
+              selectedDomains={selectedDomains}
+              onDomainChange={handleDomainChange}
+            />
           </div>
         )}
 
         <div className={styles.ListBox}>
-          {hasMatchingDomains ? (
-            <section className={styles.Items}>{box}</section>
+          {filteredList.length > 0 ? (
+            <section className={styles.Items}>
+              {filteredList.map((item) => (
+                <DomainItem data={item} key={item.id} />
+              ))}
+            </section>
           ) : (
             <div className={styles.NoResults}>
               <Image
                 src='../images/err-img.svg'
                 alt='No Results'
                 width={200}
-                height={200}
+                height={170}
               />
               <p>დომენი ვერ მოიძებნა</p>
               <span>
