@@ -11,6 +11,8 @@ import useMediaQuery from '@/app/core/hooks/useMediaHook';
 import { breakpointsMax } from '@/app/core/helpers/breakpoints';
 import CategoryFilter from '@/app/components/filter/categoryfilter/categoryflter';
 import DomainFilter from '@/app/components/filter/domainfilter/domainfilter';
+import PriceFilter from '@/app/components/filter/pricefilter/pricefilter';
+import SymbolFilter from '@/app/components/filter/symbolfilter/symbolfilter';
 
 export default function DomainList() {
   const [domain, setDomain] = useState<Domain[]>([]);
@@ -24,6 +26,9 @@ export default function DomainList() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [domains, setDomains] = useState<string[]>([]);
   const [selectedDomains, setSelectedDomains] = useState<string[]>([]);
+  const [priceRange, setPriceRange] = useState<number[]>([10000, 25000]);
+  const [symbolRange, setSymbolRange] = useState<number[]>([0, 26]);
+  const [filteredPrice, setFilteredPrice] = useState<Domain[]>(domain);
 
   const isPad = useMediaQuery(breakpointsMax.medium);
 
@@ -76,6 +81,7 @@ export default function DomainList() {
     } else {
       setSelectedCategories([...selectedCategories, category]);
     }
+    window.scrollTo(0, 0);
   };
 
   const handleDomainChange = (domain: string) => {
@@ -84,19 +90,20 @@ export default function DomainList() {
     } else {
       setSelectedDomains([...selectedDomains, domain]);
     }
+    window.scrollTo(0, 0);
   };
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
+  // if (error) {
+  //   return <div>Error: {error.message}</div>;
+  // }
 
-  const box = (hasMatchingDomains ? filteredDomain : domain).map((item) => (
-    <DomainItem data={item} key={item.id} />
-  ));
+  // const box = (hasMatchingDomains ? filteredDomain : domain).map((item) => (
+  //   <DomainItem data={item} key={item.id} />
+  // ));
   const handleSpanClick = (index: any) => {
     setActiveSpan(index);
   };
@@ -116,9 +123,28 @@ export default function DomainList() {
       .toLowerCase()
       .includes(search.toLowerCase());
 
-    return categoryMatch && domainMatch && searchMatch;
+    const priceMatch =
+      item.priceGel >= priceRange[0] && item.priceGel <= priceRange[1];
+
+    const characterCountMatch =
+      item.domainName.length >= symbolRange[0] &&
+      item.domainName.length <= symbolRange[1];
+
+    return (
+      categoryMatch &&
+      domainMatch &&
+      searchMatch &&
+      priceMatch &&
+      characterCountMatch
+    );
   });
 
+  const handlePriceChange = (values: number[]) => {
+    setPriceRange(values);
+  };
+  const handleSymbolChange = (values: number[]) => {
+    setSymbolRange(values);
+  };
   return (
     <>
       <>
@@ -206,6 +232,20 @@ export default function DomainList() {
         {!isPad && (
           <div className={styles.FilterBox}>
             <NameFilter onSearch={handleSearch} />
+            <div className={styles.Price}>
+              <PriceFilter
+                min={0}
+                max={50000}
+                values={priceRange}
+                onChange={handlePriceChange}
+              />
+              <SymbolFilter
+                min={0}
+                max={26}
+                values={symbolRange}
+                onChange={handleSymbolChange}
+              />
+            </div>
             <CategoryFilter
               categories={categories}
               selectedCategories={selectedCategories}

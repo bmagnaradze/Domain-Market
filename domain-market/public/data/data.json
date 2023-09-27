@@ -3,7 +3,7 @@
     "id": 1,
     "domainName": "some.org.ge",
     "domain": ".org.ge",
-    "priceGel": "40 000",
+    "priceGel": "40000",
     "priceUsd": "14 285.7 ",
     "category": "ბიზნესი "
   },
@@ -11,15 +11,15 @@
     "id": 2,
     "domainName": "somesome.org.ge",
     "domain": ".org.ge",
-    "priceGel": "20 000",
+    "priceGel": "5000",
     "priceUsd": "9 285.7 ",
     "category": "თამაში "
   },
   {
     "id": 3,
-    "domainName": "gijashvili.org.ge",
+    "domainName": "jashvili.org.ge",
     "domain": ".org.ge",
-    "priceGel": "40 000",
+    "priceGel": "40000",
     "priceUsd": "14 285.7 ",
     "category": "მედია "
   },
@@ -27,15 +27,15 @@
     "id": 4,
     "domainName": "lemondo.org.ge",
     "domain": ".org.ge",
-    "priceGel": "17 000",
+    "priceGel": "17000",
     "priceUsd": "4 285.7 ",
     "category": "განათლება "
   },
   {
     "id": 5,
-    "domainName": "gijashvili.org.ge",
+    "domainName": "cooool.org.ge",
     "domain": ".org.ge",
-    "priceGel": "40 000",
+    "priceGel": "200",
     "priceUsd": "14 285.7 ",
     "category": "კომერცია "
   },
@@ -43,7 +43,7 @@
     "id": 6,
     "domainName": "gijashvili.org.ge",
     "domain": ".org.ge",
-    "priceGel": "40 000",
+    "priceGel": "13000",
     "priceUsd": "14 285.7 ",
     "category": "ფინანსები "
   },
@@ -51,7 +51,7 @@
     "id": 7,
     "domainName": "gijashvili.school.ge",
     "domain": ".school.ge",
-    "priceGel": "40 000",
+    "priceGel": "50000",
     "priceUsd": "14 285.7 ",
     "category": "ავტო "
   },
@@ -60,16 +60,16 @@
     "id": 8,
     "domainName": "gijashvili.net.ge",
     "domain": ".net.ge",
-    "priceGel": "50 000",
+    "priceGel": "50000",
     "priceUsd": "21 285.7 ",
     "category": "მედიცინა "
   },
   {
     "id": 9,
-    "domainName": "gijashvili.com.ge",
+    "domainName": "yuhuuu.com.ge",
     "domain": ".com.ge",
 
-    "priceGel": "40 000",
+    "priceGel": "40000",
     "priceUsd": "14 285.7 ",
     "category": "ტექნოლოგიები "
   },
@@ -77,7 +77,7 @@
     "id": 10,
     "domainName": "ilia.ge",
     "domain": ".ge",
-    "priceGel": "40 000",
+    "priceGel": "20000",
     "priceUsd": "14 285.7 ",
     "category": "უძრავი ქონება "
   },
@@ -85,7 +85,7 @@
     "id": 11,
     "domainName": "gijashvili.com.ge",
     "domain": ".com.ge",
-    "priceGel": "40 000",
+    "priceGel": "40000",
     "priceUsd": "14 285.7 ",
     "category": "ბიზნესი "
   },
@@ -93,7 +93,7 @@
     "id": 12,
     "domainName": "gijashvili.org.ge",
     "domain": ".org.ge",
-    "priceGel": "40 000",
+    "priceGel": "200",
     "priceUsd": "14 285.7 ",
     "category": "კომერცია "
   },
@@ -101,7 +101,7 @@
     "id": 13,
     "domainName": "gijashvili.net.ge",
     "domain": ".net.ge",
-    "priceGel": "40 000",
+    "priceGel": "40000",
     "priceUsd": "14 285.7 ",
     "category": "გართობა და დასვენება "
   }

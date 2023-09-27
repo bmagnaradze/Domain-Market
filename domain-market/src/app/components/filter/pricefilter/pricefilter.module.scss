@@ -1,0 +1,43 @@
+.priceSlider {
+  width: 100%;
+  h4 {
+    font-size: 16px;
+    color: #171d25;
+    margin: 35px 0 15px;
+  }
+}
+
+.rangeTrack {
+  height: 2px;
+  border-radius: 5px;
+  display: flex;
+  width: 100%;
+}
+
+.rangeThumb {
+  width: 25px;
+  height: 25px;
+  background-color: #99cc66;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.inputContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  input {
+    width: 100%;
+    max-width: 150px;
+    font-size: 16px;
+    color: #171d25;
+    font-family: 'TKT-Regular';
+    border: 1px solid #e5e5ed;
+    border-radius: 10px;
+    padding: 12px 15px;
+  }
+
+  input:not(:last-child) {
+    margin-right: 15px;
+  }
+}
