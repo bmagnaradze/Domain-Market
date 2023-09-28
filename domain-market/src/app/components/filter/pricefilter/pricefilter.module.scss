@@ -26,18 +26,36 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
+  width: 100%;
+
+  .inputWrapper {
+    position: relative;
+    width: calc(50% - 10px);
+    max-width: 160px;
+  }
+
   input {
     width: 100%;
-    max-width: 150px;
     font-size: 16px;
     color: #171d25;
     font-family: 'TKT-Regular';
     border: 1px solid #e5e5ed;
     border-radius: 10px;
     padding: 12px 15px;
+    padding-right: 30px;
+    max-width: 160px;
+    box-sizing: border-box;
   }
 
   input:not(:last-child) {
     margin-right: 15px;
+  }
+
+  .currencySymbol {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
   }
 }

@@ -6,29 +6,23 @@ import styles from './domainList.module.scss';
 import { Domain } from '@/app/core/types/domain.types';
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import NameFilter from '@/app/components/filter/namefilter/nameFilter';
 import useMediaQuery from '@/app/core/hooks/useMediaHook';
 import { breakpointsMax } from '@/app/core/helpers/breakpoints';
-import CategoryFilter from '@/app/components/filter/categoryfilter/categoryflter';
-import DomainFilter from '@/app/components/filter/domainfilter/domainfilter';
-import PriceFilter from '@/app/components/filter/pricefilter/pricefilter';
-import SymbolFilter from '@/app/components/filter/symbolfilter/symbolfilter';
+import FilterControl from '@/app/containers/filtercontrol/filtercontrol';
+
+import FilterPopup from '@/popups/filterpopup/filterpopup';
+import { IDomainFilter } from '@/app/core/types/filter.type';
+import { domainFilter } from '@/app/core/helpers/filter';
 
 export default function DomainList() {
   const [domain, setDomain] = useState<Domain[]>([]);
+
+  const [activeSpan, setActiveSpan] = useState(0);
+  const [filteredItems, setFilteredItems] = useState<Domain[]>(domain);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
-  const [activeSpan, setActiveSpan] = useState(0);
-  const [filteredDomain, setFilteredDomain] = useState(domain);
-  const [search, setSearch] = useState('');
-  const [hasMatchingDomains, setHasMatchingDomains] = useState<boolean>(true);
-  const [categories, setCategories] = useState<string[]>([]);
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [domains, setDomains] = useState<string[]>([]);
-  const [selectedDomains, setSelectedDomains] = useState<string[]>([]);
-  const [priceRange, setPriceRange] = useState<number[]>([10000, 25000]);
-  const [symbolRange, setSymbolRange] = useState<number[]>([0, 26]);
-  const [filteredPrice, setFilteredPrice] = useState<Domain[]>(domain);
+
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
 
   const isPad = useMediaQuery(breakpointsMax.medium);
 
@@ -38,8 +32,8 @@ export default function DomainList() {
     async function getData() {
       try {
         const data = await fetchDomain();
-
         if (isMounted) {
+          setFilteredItems(data);
           setDomain(data);
           setLoading(false);
         }
@@ -58,93 +52,23 @@ export default function DomainList() {
     };
   }, []);
 
-  useEffect(() => {
-    const filteredList = domain.filter((item) =>
-      item.domainName.toLowerCase().includes(search.toLowerCase())
-    );
-    setFilteredDomain(filteredList);
-    setHasMatchingDomains(filteredList.length > 0);
-  }, [search, domain]);
-
-  useEffect(() => {
-    const uniqueCategories = [...new Set(domain.map((item) => item.category))];
-    setCategories(uniqueCategories);
-  }, [domain]);
-  useEffect(() => {
-    const uniqueDomains = [...new Set(domain.map((item) => item.domain))];
-    setDomains(uniqueDomains);
-  }, [domain]);
-
-  const handleCategoryChange = (category: string) => {
-    if (selectedCategories.includes(category)) {
-      setSelectedCategories(selectedCategories.filter((c) => c !== category));
-    } else {
-      setSelectedCategories([...selectedCategories, category]);
-    }
-    window.scrollTo(0, 0);
-  };
-
-  const handleDomainChange = (domain: string) => {
-    if (selectedDomains.includes(domain)) {
-      setSelectedDomains(selectedDomains.filter((d) => d !== domain));
-    } else {
-      setSelectedDomains([...selectedDomains, domain]);
-    }
-    window.scrollTo(0, 0);
-  };
-
   if (loading) {
     return <div>Loading...</div>;
   }
 
-  // if (error) {
-  //   return <div>Error: {error.message}</div>;
-  // }
+  const onSearch = (filters: IDomainFilter) => {
+    const filterdList = domainFilter(domain, filters);
+    setFilteredItems(filterdList);
+  };
 
-  // const box = (hasMatchingDomains ? filteredDomain : domain).map((item) => (
-  //   <DomainItem data={item} key={item.id} />
-  // ));
   const handleSpanClick = (index: any) => {
     setActiveSpan(index);
   };
 
-  const handleSearch = (query: string) => {
-    setSearch(query);
+  const handlePopupClick = () => {
+    setIsPopupVisible(!isPopupVisible);
   };
-  const filteredList = domain.filter((item) => {
-    const categoryMatch =
-      selectedCategories.length === 0 ||
-      selectedCategories.includes(item.category);
 
-    const domainMatch =
-      selectedDomains.length === 0 || selectedDomains.includes(item.domain);
-
-    const searchMatch = item.domainName
-      .toLowerCase()
-      .includes(search.toLowerCase());
-
-    const priceMatch =
-      item.priceGel >= priceRange[0] && item.priceGel <= priceRange[1];
-
-    const characterCountMatch =
-      item.domainName.length >= symbolRange[0] &&
-      item.domainName.length <= symbolRange[1];
-
-    return (
-      categoryMatch &&
-      domainMatch &&
-      searchMatch &&
-      priceMatch &&
-      characterCountMatch
-    );
-  });
-
-  const handlePriceChange = (values: number[]) => {
-    setPriceRange(values);
-  };
-  const handleSymbolChange = (values: number[]) => {
-    setSymbolRange(values);
-  };
   return (
     <>
       <>
@@ -206,7 +130,7 @@ export default function DomainList() {
 
         {isPad && (
           <div className={styles.ListHeader}>
-            <button>
+            <button onClick={handlePopupClick}>
               სორტირება
               <Image
                 src='../images/Dropdown.svg'
@@ -215,7 +139,7 @@ export default function DomainList() {
                 height={6}
               />
             </button>
-            <button>
+            <button onClick={handlePopupClick}>
               სორტირება
               <Image
                 src='../images/Dropdown.svg'
@@ -231,57 +155,47 @@ export default function DomainList() {
       <div className={styles.MainContainer}>
         {!isPad && (
           <div className={styles.FilterBox}>
-            <NameFilter onSearch={handleSearch} />
-            <div className={styles.Price}>
-              <PriceFilter
-                min={0}
-                max={50000}
-                values={priceRange}
-                onChange={handlePriceChange}
-              />
-              <SymbolFilter
-                min={0}
-                max={26}
-                values={symbolRange}
-                onChange={handleSymbolChange}
-              />
-            </div>
-            <CategoryFilter
-              categories={categories}
-              selectedCategories={selectedCategories}
-              onCategoryChange={handleCategoryChange}
-            />
-            <DomainFilter
-              domains={domains}
-              selectedDomains={selectedDomains}
-              onDomainChange={handleDomainChange}
+            <FilterControl
+              onSearch={onSearch}
+              minPrice={0}
+              maxPrice={0}
+              priceValues={[]}
+              domain={domain}
             />
           </div>
         )}
 
-        <div className={styles.ListBox}>
-          {filteredList.length > 0 ? (
+        {filteredItems.length > 0 ? (
+          <div className={styles.ListBox}>
             <section className={styles.Items}>
-              {filteredList.map((item) => (
+              {filteredItems.map((item) => (
                 <DomainItem data={item} key={item.id} />
               ))}
             </section>
-          ) : (
-            <div className={styles.NoResults}>
-              <Image
-                src='../images/err-img.svg'
-                alt='No Results'
-                width={200}
-                height={170}
-              />
-              <p>დომენი ვერ მოიძებნა</p>
-              <span>
-                მითითებული პარამეტრებით დომენების მარკეტში შედეგები ვერ
-                მოიძებნა, შეცვალეთ ძიების პარამეტრები და ცადეთ თავიდან
-              </span>
-            </div>
-          )}
-        </div>
+          </div>
+        ) : (
+          <div className={styles.NoResults}>
+            <Image
+              src='../images/err-img.svg'
+              alt='No Results'
+              width={200}
+              height={170}
+            />
+            <p>დომენი ვერ მოიძებნა</p>
+            <span>
+              მითითებული პარამეტრებით დომენების მარკეტში შედეგები ვერ მოიძებნა,
+              შეცვალეთ ძიების პარამეტრები და ცადეთ თავიდან
+            </span>
+          </div>
+        )}
+      </div>
+
+      <div className={isPopupVisible ? styles.shown : styles.hidden}>
+        <FilterPopup
+          onClose={handlePopupClick}
+          onFilterApply={onSearch}
+          domain={domain}
+        />
       </div>
     </>
   );

@@ -22,6 +22,13 @@
   }
 }
 
+.shown {
+  display: block;
+}
+.hidden {
+  display: none;
+}
+
 .FilterBox {
   width: 100%;
   max-width: 380px;
@@ -98,10 +105,10 @@
 .NoResults {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   max-width: 500px;
   margin: 0 auto;
+  padding: 0 20px;
   p {
     color: #696974;
     font-size: 18px;
@@ -110,6 +117,7 @@
   span {
     color: #92929d;
     font-size: 14px;
+    text-align: center;
   }
 }
 

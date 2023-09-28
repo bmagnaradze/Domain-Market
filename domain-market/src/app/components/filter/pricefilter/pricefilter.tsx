@@ -29,22 +29,30 @@ const PriceFilter: React.FC<PriceilterProps> = ({
       <h4>ფასები</h4>
 
       <div className={styles.inputContainer}>
-        <input
-          type='number'
-          value={values[0]}
-          onChange={(e) => handleInputChange(0, e)}
-          min={min}
-          max={values[1] - 1}
-          step={1}
-        />
-        <input
-          type='number'
-          value={values[1]}
-          onChange={(e) => handleInputChange(1, e)}
-          min={values[0] + 1}
-          max={max}
-          step={1}
-        />
+        <div className={styles.inputContainer}>
+          <div className={styles.inputWrapper}>
+            <input
+              type='number'
+              value={values[0]}
+              onChange={(e) => handleInputChange(0, e)}
+              min={min}
+              max={values[1] - 1}
+              step={1}
+            />
+            <div className={styles.currencySymbol}>₾</div>
+          </div>
+          <div className={styles.inputWrapper}>
+            <input
+              type='number'
+              value={values[1]}
+              onChange={(e) => handleInputChange(1, e)}
+              min={values[0] + 1}
+              max={max}
+              step={1}
+            />
+            <div className={styles.currencySymbol}>₾</div>
+          </div>
+        </div>
       </div>
       <Range
         step={1}
