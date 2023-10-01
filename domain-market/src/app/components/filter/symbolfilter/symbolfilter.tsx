@@ -30,6 +30,7 @@ const SymbolFilter: React.FC<SymbolFilterProps> = ({
 
       <div className={styles.inputContainer}>
         <input
+          name='symbolFilter'
           type='number'
           value={values[0]}
           onChange={(e) => handleInputChange(0, e)}
@@ -38,6 +39,7 @@ const SymbolFilter: React.FC<SymbolFilterProps> = ({
           step={1}
         />
         <input
+          name='symbolFilter'
           type='number'
           value={values[1]}
           onChange={(e) => handleInputChange(1, e)}

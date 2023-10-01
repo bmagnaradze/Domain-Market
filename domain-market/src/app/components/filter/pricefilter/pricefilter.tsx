@@ -32,6 +32,7 @@ const PriceFilter: React.FC<PriceilterProps> = ({
         <div className={styles.inputContainer}>
           <div className={styles.inputWrapper}>
             <input
+              name='priceFilter'
               type='number'
               value={values[0]}
               onChange={(e) => handleInputChange(0, e)}
@@ -44,6 +45,7 @@ const PriceFilter: React.FC<PriceilterProps> = ({
           <div className={styles.inputWrapper}>
             <input
               type='number'
+              name='priceFilter'
               value={values[1]}
               onChange={(e) => handleInputChange(1, e)}
               min={values[0] + 1}

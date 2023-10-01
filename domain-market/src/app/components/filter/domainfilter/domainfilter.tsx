@@ -19,6 +19,7 @@ const DomainFilter: React.FC<DomainFilterProps> = ({
         {domains.map((domain) => (
           <label key={domain}>
             <input
+              name='domainFilter'
               type='checkbox'
               value={domain}
               checked={selectedDomains.includes(domain)}

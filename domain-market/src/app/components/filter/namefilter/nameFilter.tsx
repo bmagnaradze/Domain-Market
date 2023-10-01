@@ -14,6 +14,7 @@ function NameFilter({ onSearch }: NameFilterProps) {
   return (
     <div className={styles.InputBox}>
       <input
+        name='nameFilter'
         type='text'
         placeholder='სახელით ძიება'
         onChange={handleInputChange}

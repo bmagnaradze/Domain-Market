@@ -19,6 +19,7 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
         {categories.map((category) => (
           <label key={category}>
             <input
+              name='categoryFilter'
               type='checkbox'
               value={category}
               checked={selectedCategories.includes(category)}
