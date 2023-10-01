@@ -7,25 +7,14 @@ import PriceFilter from '@/app/components/filter/pricefilter/pricefilter';
 import SymbolFilter from '@/app/components/filter/symbolfilter/symbolfilter';
 import React, { useEffect, useState } from 'react';
 import { Domain } from '@/app/core/types/domain.types';
-import { fetchDomain } from '@/app/core/services/domain.service';
-import { domainFilter } from '@/app/core/helpers/filter';
 import { IDomainFilter } from '@/app/core/types/filter.type';
 
 interface FilterControlProps {
   onSearch: (filters: IDomainFilter) => void;
-  minPrice: number;
-  maxPrice: number;
-  priceValues: number[];
   domain: Domain[];
 }
 
-const FilterControl: React.FC<FilterControlProps> = ({
-  onSearch,
-  minPrice,
-  maxPrice,
-  priceValues,
-  domain,
-}) => {
+const FilterControl: React.FC<FilterControlProps> = ({ onSearch, domain }) => {
   const [priceRange, setPriceRange] = useState<number[]>([10000, 25000]);
   const [symbolRange, setSymbolRange] = useState<number[]>([4, 21]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);

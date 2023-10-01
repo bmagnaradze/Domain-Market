@@ -1,18 +1,17 @@
 import React, { FC, useState } from 'react';
 import styles from './filterpopup.module.scss';
 import Image from 'next/image';
-import NameFilter from '@/app/components/filter/namefilter/nameFilter';
 import FilterControl from '@/app/containers/filtercontrol/filtercontrol';
 import { Domain } from '@/app/core/types/domain.types';
 import { IDomainFilter } from '@/app/core/types/filter.type';
 
-interface IProps {
+type TProps = {
   onClose(): void;
   onFilterApply(filters: IDomainFilter): void;
   domain: Domain[];
-}
+};
 
-const FilterPopup: FC<IProps> = ({ onClose, onFilterApply, domain }) => {
+const FilterPopup: FC<TProps> = ({ onClose, onFilterApply, domain }) => {
   const [filters, setFilters] = useState<IDomainFilter>();
 
   const onFilter = (filter: IDomainFilter) => {
@@ -40,13 +39,7 @@ const FilterPopup: FC<IProps> = ({ onClose, onFilterApply, domain }) => {
           alt='img'
         />
       </div>
-      <FilterControl
-        onSearch={onFilter}
-        minPrice={0}
-        maxPrice={0}
-        priceValues={[]}
-        domain={domain}
-      />
+      <FilterControl onSearch={onFilter} domain={domain} />
       <div className={styles.SearchButton}>
         <button onClick={handleFilterClick}>ძიება</button>
       </div>

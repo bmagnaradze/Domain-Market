@@ -77,7 +77,7 @@ const PriceFilter: React.FC<PriceilterProps> = ({
           </div>
         )}
         renderThumb={({ props }) => (
-          <div {...props} className={styles.rangeThumb} />
+          <div {...props} key={props.key} className={styles.rangeThumb} />
         )}
       />
     </div>

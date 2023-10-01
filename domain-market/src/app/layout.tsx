@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import styles from '../app/globals.module.scss';
 import { CartProvider } from './components/cart/cart';
-import Head from 'next/head';
 
 export const metadata: Metadata = {
   title: 'Domain-market',
@@ -16,9 +15,6 @@ export default function RootLayout({
   return (
     <CartProvider>
       <html lang='en'>
-        {/* <Head>
-          <meta name='viewport' content='width=device-width, initial-scale=1' />
-        </Head> */}
         <body className={styles.Main}>{children}</body>
       </html>
     </CartProvider>

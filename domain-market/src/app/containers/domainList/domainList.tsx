@@ -1,15 +1,13 @@
 'use client';
-
+import React, { useEffect, useState } from 'react';
 import { DomainItem } from '@/app/components/domain/domain';
 import { fetchDomain } from '@/app/core/services/domain.service';
 import styles from './domainList.module.scss';
 import { Domain } from '@/app/core/types/domain.types';
-import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import useMediaQuery from '@/app/core/hooks/useMediaHook';
 import { breakpointsMax } from '@/app/core/helpers/breakpoints';
 import FilterControl from '@/app/containers/filtercontrol/filtercontrol';
-
 import FilterPopup from '@/popups/filterpopup/filterpopup';
 import { IDomainFilter } from '@/app/core/types/filter.type';
 import { domainFilter } from '@/app/core/helpers/filter';
@@ -26,30 +24,20 @@ export default function DomainList() {
 
   const isPad = useMediaQuery(breakpointsMax.medium);
 
-  useEffect(() => {
-    let isMounted = true;
-
-    async function getData() {
-      try {
-        const data = await fetchDomain();
-        if (isMounted) {
-          setFilteredItems(data);
-          setDomain(data);
-          setLoading(false);
-        }
-      } catch (err: any) {
-        if (isMounted) {
-          setError(err);
-          setLoading(false);
-        }
-      }
+  const getData = async () => {
+    try {
+      const data = await fetchDomain();
+      setFilteredItems(data);
+      setDomain(data);
+      setLoading(false);
+    } catch (err: any) {
+      setError(err);
+      setLoading(false);
     }
+  };
 
+  useEffect(() => {
     getData();
-
-    return () => {
-      isMounted = false;
-    };
   }, []);
 
   if (loading) {
@@ -71,6 +59,7 @@ export default function DomainList() {
 
   return (
     <>
+      {error && <div>{error.message}</div>}
       <>
         {!isPad && (
           <div className={styles.ListHeader}>
@@ -155,13 +144,7 @@ export default function DomainList() {
       <div className={styles.MainContainer}>
         {!isPad && (
           <div className={styles.FilterBox}>
-            <FilterControl
-              onSearch={onSearch}
-              minPrice={0}
-              maxPrice={0}
-              priceValues={[]}
-              domain={domain}
-            />
+            <FilterControl onSearch={onSearch} domain={domain} />
           </div>
         )}
 

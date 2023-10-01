@@ -69,7 +69,7 @@ const SymbolFilter: React.FC<SymbolFilterProps> = ({
           </div>
         )}
         renderThumb={({ props }) => (
-          <div {...props} className={styles.rangeThumb} />
+          <div {...props} key={props.key} className={styles.rangeThumb} />
         )}
       />
     </div>
